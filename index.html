@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Site Info -->
+    <meta charset="UTF-8">
+    <title>Data Map Visualization</title>
+    <meta name="description" content="Toronto Housing Market Map">
+    <meta name="author" content="Johnny Fung">
+    <meta name="keywords" content="Johnny Fung, Toronto, Housing, Market, Price, Map">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="styles.css"/>
+    <!-- Leaflet API -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+</head>
+
+<body>
+<!--Navigation Bar-->
+<div class="navbar-background"></div>
+<nav id="navigation" class="navbar">
+    <div style="flex-grow: 0.22"></div>
+    <a 
+    class="navbar-logo"
+    href="javascript:void(0);" onclick="window.scroll(0,1);">
+        <img 
+        src="media/icon.png"
+        alt="Johnny Fung"
+        >
+    </a>
+    <div class="navbar-padding"></div>
+    <div>
+        <ul class="navbar-links">
+            <li><a onclick="scrollSmoothTo('projects')">Projects</a></li>
+            <li><a onclick="scrollSmoothTo('about')">About</a></li>
+            <li><a onclick="scrollSmoothTo('contact')">Contact</a></li>
+        </ul>
+    </div>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" checked/>
+                <div class="slider round"></div>
+        </label>
+        <p class="switch-text">Dark Mode</p>
+    </div>
+</nav>
+
+<!--Map Area-->
+<div id='map'></div>
+
+</body>
+
+<!-- JS -->
+
+<!-- Map Data Source: -->
+<script type="text/javascript" src="us-states.js"></script>
+
+<!-- Choropleth Map: -->
+<script type="text/javascript" src="main.js"></script>
+
+
+
+<!-- google Analytics script -->
+
+</html>
