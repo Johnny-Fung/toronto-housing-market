@@ -8,7 +8,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 {   maxZoom: 13,
     id: 'mapbox/light-v9'
 }).addTo(map);
-// Display the layers on map area from dataset
+// Display the layers on map area from dataset values
 L.geoJson(statesData).addTo(map);
 
 // Function to assign colour based on data density
@@ -31,10 +31,101 @@ function style(feature) {
         opacity: 1,
         color: 'white',
         dashArray: '3',
-        fillOpacity: 0.6
+        fillOpacity: 0.4
     };
 }
-// Display the layers on map area from dataset
+// Display the updated layers on map area from dataset values
 L.geoJson(statesData, {style: style}).addTo(map);
 
-// test
+// Define geojson variable so layers can be assigned to it later
+var geojson;
+
+// Define event listeners:
+// - to allow for interactions on map
+// - use event listeners to access layer using e.target
+
+// - Hover: Highlight the area when mouse hovers over layer
+
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 2.5,
+        color: '#3984f7',
+        dashArray: '',
+        fillOpacity: 0.6
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+    // Update textbox popup
+    info.update(layer.feature.properties);
+}
+// Hover Off: Reset layer to default state again once mouse is off
+function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+    // Update textbox popup
+    info.update();
+}
+
+// Click: Zoom into the area
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+// Add event listeners to map layers
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+// Display the updated layers on map area from dataset values
+geojson = L.geoJson(statesData, 
+{
+    style: style,
+    onEachFeature: onEachFeature
+}).addTo(map);
+
+// Add popups on hover to show more information about area
+var info = L.control();
+
+// Create textbox popup ontop of map
+info.onAdd = function (map) {
+    // create a div with a class "info"
+    this._div = L.DomUtil.create('div', 'info'); 
+    this.update();
+    return this._div;
+};
+
+// Update the textbox popup with values on hover
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Average Housing Price</h4>' +  (props ?
+        '<strong>' + props.name + '</strong><br />' +'$'+ props.density + ' CAD'
+        : 'Hover over a region');
+};
+// Display the textbox on map area from dataset values
+info.addTo(map);
+
+// Set legend location on map
+var legend = L.control({position: 'bottomright'});
+
+// Create a popup for the map legend with values
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        labels = [];
+
+    // loop through the color density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+// Display the legend on map area
+legend.addTo(map);
