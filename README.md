@@ -6,7 +6,7 @@ WEB LINK TO BE UPDATED:
 
 A map tool to visualize Toronto's housing market, based on sale prices of houses in the different areas of Toronto with data as of 2019. Inspired from my recent research of Toronto condo prices from listing my condo for sale. 
 
-
+The tool implements the Leaflet and Chart.js Javascript libraries. 
 
 ## Credits
 Credits to Leaflet for the [chloropleth map guide](https://leafletjs.com/examples/choropleth/), as well as 
