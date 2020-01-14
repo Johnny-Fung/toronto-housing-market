@@ -272,9 +272,10 @@ input:checked + .slider:before {
 }
 
 /* Graph Area*/
-#graph {
+#myChart {
     margin: auto;
     width: 75vw;
     height: 47vh;
+    background: red;
     /* background: var(--intro-color); */
 }
