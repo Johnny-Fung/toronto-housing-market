@@ -241,7 +241,7 @@ input:checked + .slider:before {
 /* Map Area */
 #map {
     margin: auto;
-    width: 75vw;
+    width: 85vw;
     height: 47vh;
 }
 /* Map Textbox */
@@ -274,7 +274,7 @@ input:checked + .slider:before {
 /* Graph Area*/
 #myChart {
     margin: auto;
-    width: 75vw;
+    width: 85vw;
     height: 47vh;
     background: red;
     /* background: var(--intro-color); */
