@@ -12,6 +12,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 // Display the layers on map area from dataset values
 L.geoJson(statesData).addTo(map);
 
+// Add Density colors:
 // Function to assign colour based on data density
 function getColor(density) {
     return density > 1000 ? '#ffffb2' :
@@ -37,6 +38,7 @@ function style(feature) {
 }
 // Display the updated layers on map area from dataset values
 L.geoJson(statesData, {style: style}).addTo(map);
+
 
 // Define geojson variable so layers can be assigned to it later
 var geojson;
