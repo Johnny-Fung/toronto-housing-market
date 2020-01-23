@@ -74,6 +74,7 @@ ul {
     letter-spacing: 0.5px;
     padding-left: 4rem;
 }
+
 .section-text {
     text-align: center;
     font-size: 2rem;
@@ -242,7 +243,7 @@ input:checked + .slider:before {
 #map {
     margin: auto;
     width: 85vw;
-    height: 47vh;
+    height: 56vh;
 }
 /* Map Textbox */
 .info {
@@ -275,7 +276,7 @@ input:checked + .slider:before {
 #myChart {
     margin: auto;
     width: 85vw;
-    height: 47vh;
-    background: red;
+    height: 38vh;
+    background: maroon;
     /* background: var(--intro-color); */
 }
