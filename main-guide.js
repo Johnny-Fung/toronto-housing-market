@@ -1,45 +1,43 @@
-// Map Area:
+// Map Portion
+
 
 // Instantiation of map object given instance of HTML element
-var map = L.map('map').setView([43.72, -79.355], 10.5);
+var map = L.map('map').setView([37.8, -96], 4);
 
 // Load map area
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamF3bmVlIiwiYSI6ImNrNDhlbnljdDBpN2QzZnJuN2Fsbm5wb2QifQ.4WF63m5Pova17L7cFr9ZNg',
 {   maxZoom: 13,
     id: 'mapbox/light-v9'
 }).addTo(map);
-
 // Display the layers on map area from dataset values
-L.geoJson(DistrictData).addTo(map);
+L.geoJson(statesData).addTo(map);
 
 // Add Density colors:
 // Function to assign colour based on data density
-function getColor(avgprice) {
-    return avgprice > 1100000 ? '#d73027' :
-           avgprice > 1000000 ? '#f46d43' :
-           avgprice > 900000 ? '#fdae61' :
-           avgprice > 800000 ? '#fee08b' :
-           avgprice > 700000 ? '#ffffbf' :
-           avgprice > 600000 ? '#d9ef8b' :
-           avgprice > 500000 ? '#a6d96a' :
-           avgprice > 400000 ? '#66bd63' :
-                                '#1a9850';
+function getColor(density) {
+    return density > 1000 ? '#ffffb2' :
+           density > 500  ? '#ffeda0' :
+           density > 200  ? '#fed976' :
+           density > 100  ? '#feb24c' :
+           density > 50   ? '#fd8d3c' :
+           density > 20   ? '#fc4e2a' :
+           density > 10   ? '#e31a1c' :
+                            '#b10026';
 }
 
 // Styling function that assigns colour to the GEOJson layer based on the property.density
 function style(feature) {
-    var price_as_int = parseFloat(feature.properties.PARENT_AREA_ID.replace(/,/g, ''));
     return {
-        fillColor: getColor(price_as_int),
+        fillColor: getColor(feature.properties.density),
         weight: 2,
         opacity: 1,
         color: 'white',
         dashArray: '3',
-        fillOpacity: 0.3
+        fillOpacity: 0.4
     };
 }
 // Display the updated layers on map area from dataset values
-L.geoJson(DistrictData, {style: style}).addTo(map);
+L.geoJson(statesData, {style: style}).addTo(map);
 
 
 // Define geojson variable so layers can be assigned to it later
@@ -56,7 +54,7 @@ function highlightFeature(e) {
 
     layer.setStyle({
         weight: 2.5,
-        color: '#3984F7',
+        color: '#3984f7',
         dashArray: '',
         fillOpacity: 0.6
     });
@@ -88,7 +86,7 @@ function onEachFeature(feature, layer) {
     });
 }
 // Display the updated layers on map area from dataset values
-geojson = L.geoJson(DistrictData, 
+geojson = L.geoJson(statesData, 
 {
     style: style,
     onEachFeature: onEachFeature
@@ -105,22 +103,11 @@ info.onAdd = function (map) {
     return this._div;
 };
 
-// AREA_ID = Area name
-// AREA_ATTRID = District
-// PARENT_AREA_ID = Average Price
-// AREA_SHORT_CODE = Median Price
-// AREA_LONG_CODE = Average Days On Market
-
 // Update the textbox popup with values on hover
-info.update = function (property) {
-    this._div.innerHTML = '<h4>Toronto Condo Pricing</h4>' +  (property ?
-        '<strong>' + property.AREA_ID + '</strong><br />' +'Average Price: $'+ property.PARENT_AREA_ID + ' CAD' 
-        + '</strong><br />' +'Median Price: $'+ property.AREA_SHORT_CODE + ' CAD'
-        : 'Hover over a region <br />*Data as of Q3 2019');
-    // this._div.innerHTML = '<strong>' + property.AREA_ID + '</strong><br />' + (property ?
-    //     '<h4>Average Condo Price</h4>' +'$'+ property.PARENT_AREA_ID + ' CAD' + property ?
-    //         '<h4>Median Condo Price</h4>' +'$'+ property.AREA_SHORT_CODE + ' CAD'
-    //         : 'Hover over a district');
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Average Housing Price</h4>' +  (props ?
+        '<strong>' + props.name + '</strong><br />' +'$'+ props.density + ' CAD'
+        : 'Hover over a region');
 };
 // Display the textbox on map area from dataset values
 info.addTo(map);
@@ -131,14 +118,13 @@ var legend = L.control({position: 'bottomright'});
 // Create a popup for the map legend with values
 legend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
-        grades_num = [300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000, 1100000],
-        grades = ["$300K", "$400K", "$500K", "$600K", "$700K", "$800K", "$900K", "$1M", "$1.1M"],
+        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
         labels = [];
-    div.innerHTML += '<strong>Average Sale Price</strong><br />'
+
     // loop through the color density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
-            '<i style="background:' + getColor(grades_num[i] + 1) + '"></i> ' +
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     }
 
