@@ -1,6 +1,6 @@
-# Map Visualization of Toronto's Condo Housing Market
+# Map Visualization of Toronto's Housing Market
 
-[johnnyfung.ca/toronto-condo-market/](https://johnnyfung.ca/toronto-condo-market/)
+[johnnyfung.ca/toronto-housing-market/](https://johnnyfung.ca/toronto-housing-market/)
 
 
 A map tool to visualize Toronto's housing market, based on sale prices of houses in the different areas of Toronto with data as of Q3 2019. Inspired from my recent research of Toronto condo prices from listing my condo for sale. 
