@@ -155,7 +155,7 @@ var options = {
         },
         // Purposely draw two CityAverage datasets ontop of each other, and modify second dataset instead of having to add dataset
         {
-            label: 'Click an Area on Map to Compare',
+            label: 'Click an area on map to compare',
             data: toModifycityAverage,
             backgroundColor: 
                 'rgba(44, 130, 201, 1)',
@@ -168,7 +168,7 @@ var options = {
         responsive: false,
         title: {
             display: true,
-            text: 'Compared to the Trend of the Entire City',
+            text: 'Historical Market Price',
         },
         tooltips: {
             mode: 'index',
@@ -187,6 +187,7 @@ var options = {
                 },
                 ticks: {
                     type: 'linear',
+                    
                 }
             }]
         }

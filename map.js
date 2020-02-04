@@ -1,4 +1,4 @@
-// Map Area:
+// ~~~~~ Map Area ~~~~~:
 
 // Instantiation of map object given instance of HTML element
 var map = L.map('map').setView([43.72, -79.355], 10.5);
@@ -112,7 +112,10 @@ function resetZoom() {
 }
 
 
-// Chart Area:
+
+// ~~~~~ Chart Area ~~~~~:
+
+// Data for City of Toronto Average (second dataset to be modified)
 var cityAverage = [
     {x: 2011, y: 316306},
     {x: 2012, y: 333896},
@@ -124,6 +127,18 @@ var cityAverage = [
     {x: 2018, y: 539981},
     {x: 2019, y: 587288}
 ];
+var toModifycityAverage = [
+    {x: 2011, y: 316306},
+    {x: 2012, y: 333896},
+    {x: 2013, y: 331658},
+    {x: 2014, y: 357005},
+    {x: 2015, y: 374920},
+    {x: 2016, y: 407034},
+    {x: 2017, y: 496523},
+    {x: 2018, y: 539981},
+    {x: 2019, y: 587288}
+];
+
 // Chart Options
 var options = {
     type: 'line',
@@ -137,13 +152,23 @@ var options = {
             borderColor:
                 'rgba(255, 0, 0, 1)',
             fill: false
+        },
+        // Purposely draw two CityAverage datasets ontop of each other, and modify second dataset instead of having to add dataset
+        {
+            label: 'Click an area on map to compare',
+            data: toModifycityAverage,
+            backgroundColor: 
+                'rgba(44, 130, 201, 1)',
+            borderColor:
+                'rgba(44, 130, 201, 1)',
+            fill: false
         }]
     },
     options: {
         responsive: false,
         title: {
             display: true,
-            text: 'Compared to the Trend of the Entire City',
+            text: 'Historical Market Price',
         },
         tooltips: {
             mode: 'index',
@@ -162,6 +187,7 @@ var options = {
                 },
                 ticks: {
                     type: 'linear',
+                    
                 }
             }]
         }
@@ -171,27 +197,35 @@ var options = {
 var ctx = document.getElementById('chart').getContext('2d');
 var chart = new Chart(ctx, options);
 
-// Update Chart based on Click from event listener
-// var chart;
-function selectData(e) {
-    // Select dataset to display based on clicked area
-    var data = e.target;
-    // Clears current chart area to create new chart
-    if (chart) {
-        chart.destroy();
-    }
-    // Click event listener: Zoom into the area
-    map.fitBounds(e.target.getBounds());
 
-
-}
-
-
-// Define event listeners:
-// - to allow for interactions on map
+// ~~~~~ Define event listeners ~~~~~:
+// - to allow for interactions on map and chart
 // - use event listeners to access layer using e.target
 
-// - Hover: Highlight the area when mouse hovers over layer
+
+// Update Chart based on Click event listener
+function selectData(e) {
+    // Click to Zoom into the map area
+    map.fitBounds(e.target.getBounds());
+    
+    // Select dataset to display based on clicked area
+    var data = e.target;
+
+    //Of the two CityAverage datasets, update second one
+    chart.data.datasets[1].label = data.feature.properties["AREA_ID"];
+    chart.data.datasets[1].data[0] = data.feature.properties["AREA_NAME"];
+    chart.data.datasets[1].data[1] = data.feature.properties["AREA_DESC"];
+    chart.data.datasets[1].data[2] = data.feature.properties["X"];
+    chart.data.datasets[1].data[3] = data.feature.properties["Y"];
+    chart.data.datasets[1].data[4] = data.feature.properties["LONGITUDE"];
+    chart.data.datasets[1].data[5] = data.feature.properties["LATITUDE"];
+    chart.data.datasets[1].data[6] = data.feature.properties["OBJECTID"];
+    chart.data.datasets[1].data[7] = data.feature.properties["Shape__Area"];
+    chart.data.datasets[1].data[8] = data.feature.properties["Shape__Length"];
+    chart.update();
+}
+
+// - Hover: Highlight the map area when mouse hovers over layer
 function highlightFeature(e) {
     var layer = e.target;
 
@@ -208,24 +242,19 @@ function highlightFeature(e) {
     // Update textbox popup
     info.update(layer.feature.properties);
 }
-// Hover Off: Reset layer to default state again once mouse is off
+
+// Hover Off: Reset map layer to default state again once mouse is off
 function resetHighlight(e) {
     geojson.resetStyle(e.target);
     // Update textbox popup
     info.update();
 }
 
-// Click: Zoom into the area
-// function zoomToFeature(e) {
-//     map.fitBounds(e.target.getBounds());
-// }
-
-// Add event listeners to map layers
+// Add event listeners to map layers and chart
 function onEachFeature(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
-        // click: zoomToFeature,
         click: selectData
     });
 }
