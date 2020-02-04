@@ -1,0 +1,11 @@
+var cityAverage = [
+    {x: AvgPrice2011, y: 316306},
+    {x: AvgPrice2012, y: 333896},
+    {x: AvgPrice2013, y: 331658},
+    {x: AvgPrice2014, y: 357005},
+    {x: AvgPrice2015, y: 374920},
+    {x: AvgPrice2016, y: 407034},
+    {x: AvgPrice2017, y: 496523},
+    {x: AvgPrice2018, y: 539981},
+    {x: AvgPrice2019, y: 587288}
+];

@@ -242,8 +242,8 @@ input:checked + .slider:before {
 /* Map Area */
 #map {
     margin: auto;
-    width: 85vw;
     height: 56vh;
+    width: 85vw;
 }
 /* Map Textbox */
 .info {
@@ -272,11 +272,20 @@ input:checked + .slider:before {
     opacity: 0.7;
 }
 
+.resetZoom {
+    position: absolute;
+    z-index: 10;
+    right: 44vh;
+    top: 44vh;
+
+}
+
 /* Graph Area*/
-#myChart {
+#chart {
+    position: relative;
     margin: auto;
+    height: 30vh;
     width: 85vw;
-    height: 38vh;
-    background: maroon;
+    background: white;
     /* background: var(--intro-color); */
 }

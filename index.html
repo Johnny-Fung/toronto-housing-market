@@ -18,10 +18,9 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
-    <!-- Chart.js -->
+    <!-- Chart.js scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-
 
     <!-- Map Data Source: -->
     <script type="text/javascript" src="data/merged_neighborhood_market_data.geojson"></script>
@@ -59,29 +58,26 @@
 
 <!--Map Area-->
 <div id='map'></div>
+<button id="resetZoom" onclick="resetZoom()">Reset Zoom</button>
+
 <!--Graph Area-->
-<!-- <div>
-    <canvas id='graph'></canvas>
-</div> -->
-
-<!-- Graph Setup: -->
-<!-- GTA coordinates + price density for each area -->
-<!-- Bar graphs: number of houses in each price range -->
-<!-- line across bars for average price in each bucket -->
+<div>
+    <canvas id="chart"></canvas>
+</div>
 
 
-<canvas id="myChart" width="75vw" height="47vh"></canvas>
-
+<!-- To do -->
+<!-- - change axis to $ format
+- fix reset zoom button placement
+- change colour scheme
+- change canvas sizing
+- reword title and labels -->
 
 <script type="text/javascript" src="js/dark-mode.js"></script>
-<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="map.js"></script>
 
 </body>
 
 
-
-
 </html>
-
-<!-- add github link to site -->
 <!-- add google analytics -->
