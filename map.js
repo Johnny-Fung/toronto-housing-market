@@ -36,7 +36,7 @@ function style(feature) {
         opacity: 1,
         color: 'white',
         dashArray: '3',
-        fillOpacity: 0.37
+        fillOpacity: 0.36
     };
 }
 // Display the updated layers on map area from dataset values
@@ -107,10 +107,9 @@ legend.onAdd = function (map) {
 legend.addTo(map);
 
 // Add reset zoom button
-function resetZoom() {
+L.easyButton('fas fa-home', function(btn, map){
     map.fitBounds(geojson.getBounds());
-}
-
+}).addTo(map);
 
 
 // ~~~~~ Chart Area ~~~~~:
@@ -173,6 +172,13 @@ var options = {
         tooltips: {
             mode: 'index',
             intersect: false,
+            callbacks: {
+                label: function(t, d) {
+                   var xLabel = d.datasets[t.datasetIndex].label;
+                   var yLabel = t.yLabel >= 1000 ? '$' + t.yLabel.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '$' + t.yLabel;
+                   return xLabel + ': ' + yLabel;
+                }
+             },
         },
         hover: {
 					mode: 'nearest',
@@ -187,7 +193,13 @@ var options = {
                 },
                 ticks: {
                     type: 'linear',
-                    
+                    callback: function(value, index, values) {
+                        if (parseInt(value) >= 1000) {
+                            return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        } else {
+                            return '$' + value;
+                        }
+                    },
                 }
             }]
         }

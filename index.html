@@ -20,6 +20,11 @@
         crossorigin=""></script>
     <!-- Chart.js scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/5346195df8.js" crossorigin="anonymous"></script>
+    <!-- Leaflet Button -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
     <!-- Map Data Source: -->
@@ -33,7 +38,7 @@
     <div style="flex-grow: 0.22"></div>
     <a 
     class="navbar-logo"
-    href="javascript:void(0);" onclick="window.scroll(0,1);">
+    href="https://johnnyfung.ca">
         <img 
         src="media/icon.png"
         alt="Johnny Fung"
@@ -42,9 +47,9 @@
     <div class="navbar-padding"></div>
     <div>
         <ul class="navbar-links">
-            <li><a onclick="scrollSmoothTo('projects')">Projects</a></li>
-            <li><a onclick="scrollSmoothTo('about')">About</a></li>
-            <li><a onclick="scrollSmoothTo('contact')">Contact</a></li>
+            <li><a href="https://johnnyfung.ca#projects">Projects</a></li>
+            <li><a href="https://johnnyfung.ca#about">About</a></li>
+            <li><a href="https://johnnyfung.ca#contact">Contact</a></li>
         </ul>
     </div>
     <div class="theme-switch-wrapper">
@@ -58,8 +63,6 @@
 
 <!--Map Area-->
 <div id='map'></div>
-<button id="resetZoom" onclick="resetZoom()">Reset Zoom</button>
-
 <!--Graph Area-->
 <div>
     <canvas id="chart"></canvas>
@@ -67,13 +70,12 @@
 
 
 <!-- To do -->
-<!-- - change axis to $ format
-- fix reset zoom button placement
+<!--
 - change colour scheme
 - change canvas sizing
-- less zoom in on map click
-- reword title and labels
-- add to main index.html --->
+- less zoom in on map click?
+- reword title
+--->
 
 <script type="text/javascript" src="js/dark-mode.js"></script>
 <script type="text/javascript" src="map.js"></script>
@@ -81,5 +83,5 @@
 </body>
 
 
-</html>
+</html> 
 <!-- add google analytics -->

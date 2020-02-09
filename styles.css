@@ -245,6 +245,7 @@ input:checked + .slider:before {
     height: 56vh;
     width: 85vw;
 }
+
 /* Map Textbox */
 .info {
     padding: 6px 8px;
@@ -272,19 +273,11 @@ input:checked + .slider:before {
     opacity: 0.7;
 }
 
-.resetZoom {
-    position: absolute;
-    z-index: 10;
-    right: 44vh;
-    top: 44vh;
-
-}
-
 /* Graph Area*/
 #chart {
     position: relative;
     margin: auto;
-    height: 30vh;
+    height: 10vh;
     width: 85vw;
     background: white;
     /* background: var(--intro-color); */

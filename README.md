@@ -9,9 +9,10 @@ The tool implements the Leaflet and Chart.js Javascript libraries.
 
 Data Sources:
 
+[Condo Market Data from the Toronto Real Estate Board (TREB)](http://www.trebhome.com/index.php/market-news/condo-market-report/condo-market-report-archive)
+
 [GeoJSON of the boundaries for the neighborhoods in the City of Toronto](https://open.toronto.ca/dataset/neighbourhoods/)
 
-[Condo Market Data from the Toronto Real Estate Board (TREB)](http://www.trebhome.com/index.php/market-news/condo-market-report/condo-market-report-archive)
 
 ## Credits
 Credits to Leaflet for the [chloropleth map guide](https://leafletjs.com/examples/choropleth/), as well as 
