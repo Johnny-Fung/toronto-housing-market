@@ -148,9 +148,9 @@ var options = {
             label: 'City of Toronto Average',
             data: cityAverage,
             backgroundColor: 
-                'rgba(255, 99, 132)',
+                'rgba(54, 162, 235)',
             borderColor:
-                'rgba(255, 99, 132, 0.7)',
+                'rgba(54, 162, 235, 0.7)',
             fill: false
         },
         // Purposely draw two CityAverage datasets ontop of each other, and modify second dataset instead of having to add dataset
@@ -158,9 +158,9 @@ var options = {
             label: 'Click an area on map to compare',
             data: toModifycityAverage,
             backgroundColor: 
-                'rgba(54, 162, 235)',
+                'rgba(255, 99, 132)',
             borderColor:
-                'rgba(54, 162, 235, 0.7)',
+                'rgba(255, 99, 132, 0.7)',
             fill: false
         }]
     },
