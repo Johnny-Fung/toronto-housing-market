@@ -153,7 +153,7 @@ var options = {
                 'rgba(54, 162, 235, 0.7)',
             fill: false
         },
-        // Purposely draw two CityAverage datasets ontop of each other, and modify second dataset instead of having to add dataset
+        // Purposely draw two CityAverage datasets ontop of each other and modify second dataset instead of having to add another dataset
         {
             label: 'Click an area on map to compare',
             data: toModifycityAverage,
