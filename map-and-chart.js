@@ -139,6 +139,7 @@ var toModifycityAverage = [
 ];
 
 // Chart Options
+var colorfont = 'rgba(245,245,247)';
 var options = {
     type: 'line',
     data: {
@@ -147,9 +148,9 @@ var options = {
             label: 'City of Toronto Average',
             data: cityAverage,
             backgroundColor: 
-                'rgba(255, 0, 0, 1)',
+                'rgba(255, 99, 132)',
             borderColor:
-                'rgba(255, 0, 0, 1)',
+                'rgba(255, 99, 132, 0.7)',
             fill: false
         },
         // Purposely draw two CityAverage datasets ontop of each other, and modify second dataset instead of having to add dataset
@@ -157,17 +158,27 @@ var options = {
             label: 'Click an area on map to compare',
             data: toModifycityAverage,
             backgroundColor: 
-                'rgba(44, 130, 201, 1)',
+                'rgba(54, 162, 235)',
             borderColor:
-                'rgba(44, 130, 201, 1)',
+                'rgba(54, 162, 235, 0.7)',
             fill: false
         }]
     },
     options: {
         responsive: false,
+        maintainAspectRatio: false,
+        aspectRatio: 4.56,
+        legend: {
+            labels:{
+                fontColor: colorfont
+            },
+        },
         title: {
             display: true,
-            text: 'Historical Market Price',
+            text: 'Historical Condo Pricing',
+            fontColor: colorfont,
+            fontSize: 14,
+            padding: 8,
         },
         tooltips: {
             mode: 'index',
@@ -185,13 +196,26 @@ var options = {
 					intersect: true
 				},
         scales: {
+            xAxes: [{
+                gridLines: {
+                    color: 'rgba(255, 255, 255, 0.2)',
+                },
+                ticks: {
+                    fontColor: colorfont
+                }
+            }],
             yAxes: [{
+                gridLines: {
+                    color: 'rgba(255, 255, 255, 0.2)',
+                },
                 display: true,
                 scaleLabel: {
                     display: true, 
+                    fontColor: colorfont,
                     labelString: 'Average Price in Q3'
                 },
                 ticks: {
+                    fontColor: colorfont,
                     type: 'linear',
                     callback: function(value, index, values) {
                         if (parseInt(value) >= 1000) {

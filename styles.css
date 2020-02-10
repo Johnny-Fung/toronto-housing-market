@@ -10,6 +10,7 @@
     --about-text-color:rgb(245,245,247);
     --inverted-background-color:rgb(220,220,220,0.8);
     --inverted-secondary-font-color:black;
+    --chart-color:rgb(22,23,24);
 }
 [data-theme="light"] {
     --background-color:rgb(229,228,229);
@@ -22,6 +23,7 @@
     --about-text-color:rgb(200,200,200);
     --inverted-background-color:rgb(22,23,24,0.8);
     --inverted-secondary-font-color:rgb(245,245,247);
+    --chart-color:rgb(22,23,24, 0.9);
 }
 html {
     box-sizing: border-box;
@@ -243,7 +245,7 @@ input:checked + .slider:before {
 #map {
     margin: auto;
     height: 56vh;
-    width: 85vw;
+    width: 96vw;
 }
 
 /* Map Textbox */
@@ -277,8 +279,7 @@ input:checked + .slider:before {
 #chart {
     position: relative;
     margin: auto;
-    height: 10vh;
-    width: 85vw;
-    background: white;
-    /* background: var(--intro-color); */
+    height: 10%;
+    width: 96vw;
+    background: var(--chart-color);
 }
