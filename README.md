@@ -17,3 +17,6 @@ Data Sources:
 ## Credits
 Credits to Leaflet for the [chloropleth map guide](https://leafletjs.com/examples/choropleth/), as well as 
 [Ross McCandless](https://github.com/Ross-McCandless) for the project idea.
+
+![Screenshot](media/housingmarket-preview1.png)
+![Screenshot](media/housingmarket-preview2.png)
