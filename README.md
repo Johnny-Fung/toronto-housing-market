@@ -3,7 +3,9 @@
 [johnnyfung.ca/toronto-housing-market/](https://johnnyfung.ca/toronto-housing-market/)
 
 
-A tool to visualize Toronto's housing market, based on sale prices of condos in the different districts of Toronto with data as of Q3 2019. The graphs display the historical price averages by district to see how the prices fared relative to the entire city's price trend. Inspired from my recent research of Toronto condo prices after listing a condo for sale. 
+An elegant tool to visualize Toronto's housing market, based on sale prices of condos in the different districts of Toronto with data as of Q3 2019. The interactive heat map highlights the most desirable neighborhoods in the city, while the price history graphs allows for trend analysis and price comparisons. The graphs show the historical market averages by district to see how the prices in that area fared, relative to the entire city's performance. 
+
+Inspired from my recent research of Toronto condo prices after listing a condo for sale. 
 
 The tool implements the Leaflet and Chart.js Javascript libraries. 
 
